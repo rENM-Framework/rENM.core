@@ -1,4 +1,4 @@
-#' Look up species metadata by four-letter alpha code
+#' Look up species metadata by four-letter alpha code (test)
 #'
 #' Retrieves a single species record from the rENM species metadata
 #' table stored within the project directory using a standardized
@@ -113,26 +113,26 @@
 #'
 #' @export
 get_species_info <- function(alpha_code, project_dir = NULL) {
-  
+
   # ---------------------------------------------------------------------------
   # Validate input
   # ---------------------------------------------------------------------------
   if (!is.character(alpha_code) || length(alpha_code) != 1L || !nzchar(alpha_code)) {
     stop("`alpha_code` must be a non-empty character(1).", call. = FALSE)
   }
-  
+
   # ---------------------------------------------------------------------------
   # Resolve rENM project directory
   # ---------------------------------------------------------------------------
   # Centralized configuration ensures no hard-coded filesystem paths
   project_root <- rENM_project_dir(project_dir)
-  
+
   csv_path <- file.path(project_root, "data", "_species.csv")
-  
+
   if (!file.exists(csv_path)) {
     stop("Species CSV not found at: ", csv_path, call. = FALSE)
   }
-  
+
   # ---------------------------------------------------------------------------
   # Read species table
   # ---------------------------------------------------------------------------
@@ -146,11 +146,11 @@ get_species_info <- function(alpha_code, project_dir = NULL) {
       )
     }
   )
-  
+
   if (!nrow(df)) {
     stop("The species table is present but empty: ", csv_path, call. = FALSE)
   }
-  
+
   # ---------------------------------------------------------------------------
   # Column-name normalization helper
   # ---------------------------------------------------------------------------
@@ -158,16 +158,16 @@ get_species_info <- function(alpha_code, project_dir = NULL) {
   # "COMMON.NAME", "Common Name", and "common_name" all normalize
   # to the same comparison string.
   norm <- function(x) gsub("[^A-Z0-9]", "", toupper(x))
-  
+
   col_norm <- norm(names(df))
-  
+
   # ---------------------------------------------------------------------------
   # Identify alpha-code column
   # ---------------------------------------------------------------------------
   alpha_candidates <- c("ALPHACODE", "ALPHA", "SPECIESCODE", "SPSC", "BANDINGCODE")
-  
+
   alpha_col_idx <- match(TRUE, col_norm %in% alpha_candidates, nomatch = 0L)
-  
+
   if (alpha_col_idx == 0L) {
     stop(
       "Could not locate the alpha-code column. Looked for one of: ",
@@ -176,17 +176,17 @@ get_species_info <- function(alpha_code, project_dir = NULL) {
       call. = FALSE
     )
   }
-  
+
   alpha_col <- names(df)[alpha_col_idx]
-  
+
   # ---------------------------------------------------------------------------
   # Required output columns
   # ---------------------------------------------------------------------------
   wanted      <- c("COMMON.NAME", "SCIENTIFIC.NAME", "EBD.RECORDS", "EBD.RANGE", "GAP.RANGE")
   wanted_norm <- norm(wanted)
-  
+
   match_idx <- match(wanted_norm, col_norm, nomatch = 0L)
-  
+
   if (any(match_idx == 0L)) {
     missing <- wanted[match_idx == 0L]
     stop(
@@ -196,20 +196,20 @@ get_species_info <- function(alpha_code, project_dir = NULL) {
       call. = FALSE
     )
   }
-  
+
   actual_wanted <- names(df)[match_idx]
-  
+
   # ---------------------------------------------------------------------------
   # Filter by alpha code
   # ---------------------------------------------------------------------------
   key <- toupper(trimws(alpha_code))
-  
+
   matches <- df[toupper(trimws(df[[alpha_col]])) == key, , drop = FALSE]
-  
+
   if (nrow(matches) == 0L) {
     stop("No species found for alpha code '", alpha_code, "'.", call. = FALSE)
   }
-  
+
   if (nrow(matches) > 1L) {
     stop(
       "Multiple species matched alpha code '", alpha_code, "'. ",
@@ -217,13 +217,13 @@ get_species_info <- function(alpha_code, project_dir = NULL) {
       call. = FALSE
     )
   }
-  
+
   # ---------------------------------------------------------------------------
   # Return standardized metadata
   # ---------------------------------------------------------------------------
   out <- matches[, actual_wanted, drop = FALSE]
   names(out) <- wanted
   rownames(out) <- NULL
-  
+
   out
 }
