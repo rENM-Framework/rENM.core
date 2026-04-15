@@ -1,4 +1,4 @@
-#' Look up species metadata by four-letter alpha code (test)
+#' Look up species metadata by four-letter alpha code
 #'
 #' Retrieves a single species record from the rENM species metadata
 #' table stored within the project directory using a standardized
