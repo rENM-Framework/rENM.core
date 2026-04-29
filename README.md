@@ -1,5 +1,7 @@
 # rENM.core
 
+![rENM](https://img.shields.io/badge/rENM-framework-blue) ![module](https://img.shields.io/badge/module-core-informational)
+
 **Core infrastructure for the rENM Framework**
 
 ## Overview
