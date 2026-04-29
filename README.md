@@ -45,11 +45,7 @@ show_variables()
 
 ## Relationship to Other Packages
 
--   `rENM.analysis` — modeling and trend computation
--   `rENM.reports` — maps, summaries, and reports
--   `rENM.ai` — AI-driven synthesis and interpretation
-
-`rENM.core` underpins all of the above.
+`rENM.core` is used by all rENM Framework packages.
 
 ## License
 
@@ -58,4 +54,4 @@ See `LICENSE` for details.
 ------------------------------------------------------------------------
 
 **rENM Framework**\
-A modular system for reconstructing and analyzing long-term ecological niche dynamics in climate space.
+A modular system for reconstructing and analyzing long-term ecological niche dynamics.
