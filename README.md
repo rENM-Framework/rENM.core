@@ -83,6 +83,10 @@ configuration options.
 use it for project-directory resolution and metadata access. Changes to
 the conventions established here propagate across the entire framework.
 
+```
+rENM.core → rENM.data → rENM.model → rENM.analysis → rENM.ai → rENM.reports
+```
+
 ## License
 
 See `LICENSE` for details.
