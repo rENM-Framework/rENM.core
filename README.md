@@ -94,4 +94,4 @@ See `LICENSE` for details.
 ---
 
 **rENM Framework** — A modular system for reconstructing and analyzing
-long-term ecological niche dynamics.
+long-term ecological niche dynamics. 
