@@ -1,21 +1,24 @@
+---
+
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # rENM.core
 
-![rENM](https://img.shields.io/badge/rENM-framework-blue)
-![module](https://img.shields.io/badge/module-core-informational)
+![rENM](https://img.shields.io/badge/rENM-framework-blue) ![module](https://img.shields.io/badge/module-core-informational)
 
 **Core infrastructure for the rENM Framework**
 
 ## Overview
 
-`rENM.core` provides the foundational utilities used throughout an rENM
-analysis. It is intentionally lightweight, focused on **project organization,
-metadata discovery, and reproducibility** rather than modeling or analysis.
-All other rENM packages depend on this one.
+`rENM.core` provides the foundational utilities used throughout an rENM analysis. It is intentionally lightweight, focused on **project organization, metadata discovery, and reproducibility** rather than modeling or analysis. All other rENM packages depend on this one.
 
 ## Key functions
 
 | Function | Description |
-|---|---|
+|------------------------------------|------------------------------------|
 | `rENM_project_dir()` | Resolve the active rENM project root |
 | `get_species_info()` | Retrieve standardized metadata for a species by alpha code |
 | `show_species()` | Inspect the species table for a project |
@@ -23,7 +26,7 @@ All other rENM packages depend on this one.
 
 ## Installation
 
-```r
+``` r
 # From GitHub
 devtools::install_github("rENM-Framework/rENM.core")
 
@@ -33,10 +36,9 @@ devtools::install_local("rENM.core")
 
 ## Getting started
 
-All rENM functions that access project files need to know where your project
-directory is. The recommended approach for scripts is to pass it explicitly:
+All rENM functions that access project files need to know where your project directory is. The recommended approach for scripts is to pass it explicitly:
 
-```r
+``` r
 library(rENM.core)
 
 proj <- "/path/to/your/rENM/project"
@@ -49,10 +51,9 @@ show_variables(project_dir = proj)
 casp <- get_species_info("CASP", project_dir = proj)
 ```
 
-For interactive work, you can set the project directory once per session so
-you don't have to pass it everywhere:
+For interactive work, you can set the project directory once per session so you don't have to pass it everywhere:
 
-```r
+``` r
 options(rENM.project_dir = "/path/to/your/rENM/project")
 # or
 Sys.setenv(RENM_PROJECT_DIR = "/path/to/your/rENM/project")
@@ -62,28 +63,24 @@ show_species()
 get_species_info("CASP")
 ```
 
-See `?rENM_project_dir` for the full resolution precedence and persistent
-configuration options.
+See `?rENM_project_dir` for the full resolution precedence and persistent configuration options.
 
 ## Project directory structure
 
 `rENM.core` expects the following layout within the project root:
 
-```
+```         
 <project_dir>/
 └── data/
     ├── _species.csv     # species metadata table
     └── _variables.csv   # environmental variables metadata table
 ```
 
-## Role in the rENM framework
+## Role in the rENM Framework
 
-`rENM.core` sits at the base of the pipeline. All downstream packages
-(`rENM.data`, `rENM.model`, `rENM.analysis`, `rENM.ai`, `rENM.reports`)
-use it for project-directory resolution and metadata access. Changes to
-the conventions established here propagate across the entire framework.
+`rENM.core` sits at the base of the pipeline. All downstream packages (`rENM.data`, `rENM.model`, `rENM.analysis`, `rENM.ai`, `rENM.reports`) use it for project-directory resolution and metadata access. Changes to the conventions established here propagate across the entire framework.
 
-```
+```         
 rENM.core → rENM.data → rENM.model → rENM.analysis → rENM.ai → rENM.reports
 ```
 
@@ -91,7 +88,6 @@ rENM.core → rENM.data → rENM.model → rENM.analysis → rENM.ai → rENM.re
 
 See `LICENSE` for details.
 
----
+------------------------------------------------------------------------
 
-**rENM Framework** — A modular system for reconstructing and analyzing
-long-term ecological niche dynamics. 
+**rENM Framework** — A modular system for reconstructing and analyzing long-term ecological niche dynamics.
