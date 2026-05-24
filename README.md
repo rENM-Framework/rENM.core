@@ -1,9 +1,6 @@
----
+------------------------------------------------------------------------
 
-editor_options: 
-  markdown: 
-    wrap: 72
----
+editor_options: markdown: wrap: 72 ---
 
 # rENM.core
 
@@ -18,7 +15,7 @@ editor_options:
 ## Key functions
 
 | Function | Description |
-|------------------------------------|------------------------------------|
+|----|----|
 | `rENM_project_dir()` | Resolve the active rENM project root |
 | `get_species_info()` | Retrieve standardized metadata for a species by alpha code |
 | `show_species()` | Inspect the species table for a project |
