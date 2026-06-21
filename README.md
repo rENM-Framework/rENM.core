@@ -1,6 +1,6 @@
 # rENM.core
 
-![rENM](https://img.shields.io/badge/rENM-framework-blue) ![module](https://img.shields.io/badge/module-core-informational)
+![rENM](https://img.shields.io/badge/rENM-framework-blue) ![module](https://img.shields.io/badge/module-core-informational) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.20787447.svg)](https://doi.org/10.5281/zenodo.20787447)
 
 **Core infrastructure for the rENM Framework**
 
@@ -11,7 +11,7 @@
 ## Key functions
 
 | Function | Description |
-|------------------------------------|------------------------------------|
+|----|----|
 | `rENM_project_dir()` | Resolve the active rENM project root |
 | `get_species_info()` | Retrieve standardized metadata for a species by alpha code |
 | `show_species()` | Inspect the species table for a project |
