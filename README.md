@@ -21,10 +21,10 @@
 
 ``` r
 # From GitHub
-devtools::install_github("rENM-Framework/rENM.core")
+remotes::install_github("rENM-Framework/rENM.core")
 
 # From a local source directory
-devtools::install_local("rENM.core")
+remotes::install_local("rENM.core")
 ```
 
 ## Getting started
