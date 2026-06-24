@@ -67,6 +67,10 @@ See `?rENM_project_dir` for the full resolution precedence and persistent config
 └── data/
     ├── _species.csv     # species metadata table
     └── _variables.csv   # environmental variables metadata table
+    └── eBird/           # eBird EBD records
+    └── merra/           # MERRA-2 and MERRAclim-2 variables
+    └── shapefiles/      # USGS GAP range and state shapefiles
+└── runs/    
 ```
 
 ## Role in the rENM Framework
